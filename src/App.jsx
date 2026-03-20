@@ -250,14 +250,31 @@ function Home({
     await supabase.auth.signOut()
   }
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 900
+
   return (
     <div style={styles.home}>
       <div style={styles.homeOverlay} />
       <div style={styles.homeVignette} />
 
-      <div style={styles.homeContentWide}>
-        <div style={styles.homeHeroGrid}>
-          <div style={styles.homeIntroPanel}>
+      <div
+        style={{
+          ...styles.homeContentWide,
+          ...(isMobile ? styles.homeContentWideMobile : {}),
+        }}
+      >
+        <div
+          style={{
+            ...styles.homeHeroGrid,
+            ...(isMobile ? styles.homeHeroGridMobile : {}),
+          }}
+        >
+                    <div
+            style={{
+              ...styles.homeIntroPanel,
+              ...(isMobile ? styles.homeIntroPanelMobile : {}),
+            }}
+          >
             <div style={styles.homeSmallLabel}>Il tuo spazio personale</div>
             <h1 style={styles.homeTitle}>Memories</h1>
 
@@ -322,7 +339,12 @@ function Home({
             </div>
           </div>
 
-          <div style={styles.homeActionPanel}>
+          <div
+            style={{
+              ...styles.homeActionPanel,
+              ...(isMobile ? styles.homeActionPanelMobile : {}),
+            }}
+          >
             <div style={styles.homeActionTitle}>Cosa vuoi fare?</div>
 
             <div style={styles.homeMenuVertical}>
@@ -2517,5 +2539,24 @@ const styles = {
     gap: '10px',
     justifyContent: 'center',
     flexWrap: 'wrap',
+  },
+  homeContentWideMobile: {
+    width: 'calc(100% - 24px)',
+    padding: '18px 0 20px',
+  },
+
+  homeHeroGridMobile: {
+    gridTemplateColumns: '1fr',
+    gap: '16px',
+  },
+
+  homeIntroPanelMobile: {
+    padding: '24px 18px',
+    borderRadius: '24px',
+  },
+
+  homeActionPanelMobile: {
+    padding: '24px 18px',
+    borderRadius: '24px',
   },
 }
