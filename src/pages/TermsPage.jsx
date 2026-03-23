@@ -92,8 +92,15 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold mb-2">11. Legge applicabile</h2>
             <p>Il presente accordo è regolato dalla legge italiana.</p>
-          </section>
-        </div>
-      </div>
+            </section>
+    </div>
+
+    {/* NOTA INGLESE */}
+    <div style={{ marginTop: 30, opacity: 0.8, fontSize: '0.9rem' }}>
+      <p>This page is currently available in Italian only.</p>
+      <p>An English version will be available soon.</p>
+    </div>
+
+  </div>
     )
   }
