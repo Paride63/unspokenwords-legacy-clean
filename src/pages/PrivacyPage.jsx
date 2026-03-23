@@ -89,8 +89,15 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold mb-2">11. Contatti</h2>
             <p>Per richieste relative ai dati personali: paride.boccellari@unspokenwords.it</p>
-          </section>
-        </div>
-      </div>
+            </section>
+    </div>
+
+    {/* NOTA INGLESE */}
+    <div style={{ marginTop: 30, opacity: 0.8, fontSize: '0.9rem' }}>
+      <p>This page is currently available in Italian only.</p>
+      <p>An English version will be available soon.</p>
+    </div>
+
+  </div>
     )
   }
