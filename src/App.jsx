@@ -102,6 +102,8 @@ function AuthScreen() {
   const [acceptTerms, setAcceptTerms] = useState(false)
   const [acceptPrivacy, setAcceptPrivacy] = useState(false)
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 980
+
   const handleSubmit = async () => {
     try {
       setLoading(true)
@@ -156,81 +158,168 @@ function AuthScreen() {
       <div style={styles.homeOverlay} />
       <div style={styles.homeVignette} />
 
-      <div style={styles.authCard}>
-        <h1 style={styles.authTitle}>Memories</h1>
-        <div style={styles.authSubtitle}>
-          {mode === 'login' ? 'Accedi al tuo spazio personale' : 'Crea il tuo account'}
-        </div>
-
-        <div style={styles.field}>
-          <div style={styles.label}>Email</div>
-          <input
-            type="email"
-            autoComplete={mode === 'login' ? 'username' : 'email'}
-            style={styles.input}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <div style={styles.field}>
-          <div style={styles.label}>Password</div>
-          <input
-            type="password"
-            autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-            style={styles.input}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-
-        {mode === 'register' && (
-          <div style={styles.checkboxWrap}>
-            <label style={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={acceptTerms}
-                onChange={(e) => setAcceptTerms(e.target.checked)}
-              />
-              <span>
-                Ho letto e accetto i{' '}
-                <a href="/termini" style={styles.inlineLink}>
-                  Termini e Condizioni
-                </a>
-              </span>
-            </label>
-
-            <label style={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={acceptPrivacy}
-                onChange={(e) => setAcceptPrivacy(e.target.checked)}
-              />
-              <span>
-                Ho letto la{' '}
-                <a href="/privacy" style={styles.inlineLink}>
-                  Privacy Policy
-                </a>
-              </span>
-            </label>
-          </div>
-        )}
-
-        <div style={styles.actions}>
-          <button style={styles.primaryButton} onClick={handleSubmit} disabled={loading}>
-            {loading ? 'Attendere...' : mode === 'login' ? 'Accedi' : 'Registrati'}
-          </button>
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: 18 }}>
-          <button
-            style={styles.linkButton}
-            onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
+      <div
+        style={{
+          ...styles.authShell,
+          ...(isMobile ? styles.authShellMobile : {}),
+        }}
+      >
+        <div
+          style={{
+            ...styles.authLayout,
+            ...(isMobile ? styles.authLayoutMobile : {}),
+          }}
+        >
+          <div
+            style={{
+              ...styles.authHeroPanel,
+              ...(isMobile ? styles.authHeroPanelMobile : {}),
+            }}
           >
-            {mode === 'login'
-              ? 'Non hai un account? Registrati'
-              : 'Hai già un account? Accedi'}
-          </button>
+            <div style={styles.authBadge}>UnspokenWords Legacy</div>
+
+            <h1 style={styles.authHeroTitle}>
+              Il tuo spazio personale
+              <br />
+              per custodire ricordi,
+              <br />
+              parole e presenza.
+            </h1>
+
+            <div style={styles.authHeroLead}>
+              Legacy è uno spazio intimo e protetto dove raccogliere testi, foto, video,
+              voce e tracce audio in un archivio personale ordinato e sempre accessibile.
+            </div>
+
+            <div style={styles.authHeroPills}>
+              <span style={styles.authHeroPill}>🔒 Privato</span>
+              <span style={styles.authHeroPill}>☁️ Sempre accessibile</span>
+              <span style={styles.authHeroPill}>🎙️ Foto, voce, video, audio</span>
+            </div>
+
+            <div style={styles.authFeatureGrid}>
+              <div style={styles.authFeatureCard}>
+                <div style={styles.authFeatureTitle}>Scrivi</div>
+                <div style={styles.authFeatureText}>
+                  Conserva pensieri, ricordi, episodi e parole importanti.
+                </div>
+              </div>
+
+              <div style={styles.authFeatureCard}>
+                <div style={styles.authFeatureTitle}>Registra</div>
+                <div style={styles.authFeatureText}>
+                  Aggiungi voce, immagini, video e tracce audio ai tuoi ricordi.
+                </div>
+              </div>
+
+              <div style={styles.authFeatureCard}>
+                <div style={styles.authFeatureTitle}>Proteggi</div>
+                <div style={styles.authFeatureText}>
+                  Tieni tutto in uno spazio personale, semplice da ritrovare nel tempo.
+                </div>
+              </div>
+            </div>
+
+            <div style={styles.authQuoteBox}>
+              “Non solo memoria digitale, ma un luogo personale da costruire con calma,
+              giorno dopo giorno.”
+            </div>
+          </div>
+
+          <div style={styles.authCard}>
+            <h1 style={styles.authTitle}>Memories</h1>
+            <div style={styles.authSubtitle}>
+              {mode === 'login'
+                ? 'Accedi al tuo spazio personale'
+                : 'Crea il tuo account personale'}
+            </div>
+
+            <div style={styles.field}>
+              <div style={styles.label}>Email</div>
+              <input
+                type="email"
+                autoComplete={mode === 'login' ? 'username' : 'email'}
+                style={styles.input}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div style={styles.field}>
+              <div style={styles.label}>Password</div>
+              <input
+                type="password"
+                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                style={styles.input}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            {mode === 'register' && (
+              <div style={styles.checkboxWrap}>
+                <label style={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={acceptTerms}
+                    onChange={(e) => setAcceptTerms(e.target.checked)}
+                  />
+                  <span>
+                    Ho letto e accetto i{' '}
+                    <a href="/termini" style={styles.inlineLink}>
+                      Termini e Condizioni
+                    </a>
+                  </span>
+                </label>
+
+                <label style={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={acceptPrivacy}
+                    onChange={(e) => setAcceptPrivacy(e.target.checked)}
+                  />
+                  <span>
+                    Ho letto la{' '}
+                    <a href="/privacy" style={styles.inlineLink}>
+                      Privacy Policy
+                    </a>
+                  </span>
+                </label>
+              </div>
+            )}
+
+            <div style={styles.actions}>
+              <button style={styles.primaryButton} onClick={handleSubmit} disabled={loading}>
+                {loading ? 'Attendere...' : mode === 'login' ? 'Accedi' : 'Registrati'}
+              </button>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: 18 }}>
+              <button
+                style={styles.linkButton}
+                onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
+              >
+                {mode === 'login'
+                  ? 'Non hai un account? Registrati'
+                  : 'Hai già un account? Accedi'}
+              </button>
+            </div>
+
+            <div style={styles.authLegalRow}>
+              <a href="/legal" style={styles.legalLink}>
+                Legal
+              </a>
+              <a href="/termini" style={styles.legalLink}>
+                Termini
+              </a>
+              <a href="/privacy" style={styles.legalLink}>
+                Privacy
+              </a>
+              <a href="/cookie" style={styles.legalLink}>
+                Cookie
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -269,7 +358,7 @@ function Home({
             ...(isMobile ? styles.homeHeroGridMobile : {}),
           }}
         >
-                    <div
+          <div
             style={{
               ...styles.homeIntroPanel,
               ...(isMobile ? styles.homeIntroPanelMobile : {}),
@@ -285,7 +374,9 @@ function Home({
 
             <div style={styles.homeStatsRow}>
               {!isUnlocked ? (
-                <div style={styles.limitBadge}>Piano Free · {memoryCount}/{FREE_MEMORY_LIMIT} ricordi</div>
+                <div style={styles.limitBadge}>
+                  Piano Free · {memoryCount}/{FREE_MEMORY_LIMIT} ricordi
+                </div>
               ) : (
                 <div style={styles.limitBadge}>Accesso completo attivo</div>
               )}
@@ -783,7 +874,11 @@ function MemoryDetail({ memory, go, setEditing, deleteMemory }) {
           <div style={styles.sectionTitle}>Foto</div>
           <div style={styles.imageGrid}>
             {memory.images.map((img) => (
-              <button key={img.id} style={styles.imageButton} onClick={() => setPreviewSrc(img.url)}>
+              <button
+                key={img.id}
+                style={styles.imageButton}
+                onClick={() => setPreviewSrc(img.url)}
+              >
                 <img src={img.url} alt={img.name} style={styles.imagePreview} />
               </button>
             ))}
@@ -952,7 +1047,9 @@ function Editor({
       }
 
       if (field === 'videos' && file.size > MAX_VIDEO_SIZE) {
-        alert(`Il video "${file.name}" è troppo grande. Dimensione massima: ${MAX_VIDEO_SIZE_MB} MB.`)
+        alert(
+          `Il video "${file.name}" è troppo grande. Dimensione massima: ${MAX_VIDEO_SIZE_MB} MB.`
+        )
         continue
       }
 
@@ -988,7 +1085,9 @@ function Editor({
 
     for (const file of incomingFiles) {
       if (file.size > MAX_AUDIO_SIZE) {
-        alert(`Il file audio "${file.name}" è troppo grande. Dimensione massima: ${MAX_AUDIO_SIZE_MB} MB.`)
+        alert(
+          `Il file audio "${file.name}" è troppo grande. Dimensione massima: ${MAX_AUDIO_SIZE_MB} MB.`
+        )
         continue
       }
 
@@ -1071,7 +1170,11 @@ function Editor({
       for (const img of data.images || []) {
         if (img.file) {
           totalNewUploadBytes += img.file.size || 0
-          const uploaded = await uploadFileToBucket('memory-images', img, `images/${session.user.id}`)
+          const uploaded = await uploadFileToBucket(
+            'memory-images',
+            img,
+            `images/${session.user.id}`
+          )
           uploadedImages.push(uploaded)
         } else {
           uploadedImages.push(img)
@@ -1082,7 +1185,11 @@ function Editor({
       for (const video of data.videos || []) {
         if (video.file) {
           totalNewUploadBytes += video.file.size || 0
-          const uploaded = await uploadFileToBucket('memory-videos', video, `videos/${session.user.id}`)
+          const uploaded = await uploadFileToBucket(
+            'memory-videos',
+            video,
+            `videos/${session.user.id}`
+          )
           uploadedVideos.push(uploaded)
         } else {
           uploadedVideos.push(video)
@@ -1093,7 +1200,11 @@ function Editor({
       for (const track of data.audio?.tracks || []) {
         if (track.file) {
           totalNewUploadBytes += track.file.size || 0
-          const uploaded = await uploadFileToBucket('memory-audio', track, `tracks/${session.user.id}`)
+          const uploaded = await uploadFileToBucket(
+            'memory-audio',
+            track,
+            `tracks/${session.user.id}`
+          )
           uploadedTracks.push(uploaded)
         } else {
           uploadedTracks.push(track)
@@ -1532,7 +1643,12 @@ export default function App() {
   }
 
   if (!session) {
-    return <AuthScreen />
+    return (
+      <>
+        <AuthScreen />
+        {!cookieNoticeSeen && <CookieBanner onClose={dismissCookieNotice} />}
+      </>
+    )
   }
 
   if (page === 'home') {
@@ -1682,10 +1798,137 @@ const styles = {
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
   },
 
+  authShell: {
+    position: 'relative',
+    zIndex: 2,
+    width: 'min(1440px, calc(100% - 40px))',
+    padding: '28px 0',
+  },
+
+  authShellMobile: {
+    width: 'calc(100% - 20px)',
+    padding: '16px 0 20px',
+  },
+
+  authLayout: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1.25fr) minmax(380px, 0.75fr)',
+    gap: '24px',
+    alignItems: 'stretch',
+  },
+
+  authLayoutMobile: {
+    gridTemplateColumns: '1fr',
+    gap: '16px',
+  },
+
+  authHeroPanel: {
+    background: 'rgba(18, 12, 10, 0.44)',
+    border: '1px solid rgba(255,255,255,0.10)',
+    borderRadius: '34px',
+    padding: '42px',
+    backdropFilter: 'blur(10px)',
+    boxShadow: '0 22px 60px rgba(0,0,0,0.22)',
+    color: '#f5efe4',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+
+  authHeroPanelMobile: {
+    padding: '24px 18px',
+    borderRadius: '24px',
+  },
+
+  authBadge: {
+    display: 'inline-block',
+    alignSelf: 'flex-start',
+    padding: '8px 14px',
+    borderRadius: '999px',
+    background: 'rgba(255,255,255,0.08)',
+    border: '1px solid rgba(255,255,255,0.14)',
+    color: '#f7ead1',
+    fontSize: '0.88rem',
+    marginBottom: '18px',
+    backdropFilter: 'blur(8px)',
+  },
+
+  authHeroTitle: {
+    margin: '0 0 18px 0',
+    fontSize: 'clamp(2.3rem, 4.8vw, 4.8rem)',
+    lineHeight: 1.02,
+    fontWeight: 700,
+    color: '#f7ead1',
+    letterSpacing: '-0.02em',
+  },
+
+  authHeroLead: {
+    color: '#f6ebdc',
+    fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+    lineHeight: 1.75,
+    maxWidth: '760px',
+    marginBottom: '24px',
+  },
+
+  authHeroPills: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '12px',
+    marginBottom: '24px',
+  },
+
+  authHeroPill: {
+    display: 'inline-block',
+    padding: '10px 16px',
+    borderRadius: '999px',
+    background: 'rgba(255,255,255,0.08)',
+    border: '1px solid rgba(255,255,255,0.12)',
+    color: '#f0e5d4',
+    backdropFilter: 'blur(8px)',
+    fontSize: '0.95rem',
+  },
+
+  authFeatureGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '16px',
+    marginBottom: '22px',
+  },
+
+  authFeatureCard: {
+    background: 'rgba(255,255,255,0.06)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    borderRadius: '22px',
+    padding: '18px',
+  },
+
+  authFeatureTitle: {
+    color: '#f6e7cc',
+    fontSize: '1.02rem',
+    marginBottom: '8px',
+  },
+
+  authFeatureText: {
+    color: '#decfb6',
+    lineHeight: 1.6,
+    fontSize: '0.96rem',
+  },
+
+  authQuoteBox: {
+    marginTop: '4px',
+    padding: '18px 20px',
+    borderRadius: '22px',
+    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    color: '#e7d9c2',
+    lineHeight: 1.7,
+    fontSize: '0.98rem',
+  },
+
   authCard: {
     position: 'relative',
     zIndex: 2,
-    width: 'min(500px, calc(100% - 40px))',
+    width: '100%',
     background: 'rgba(22, 14, 12, 0.58)',
     border: '1px solid rgba(255,255,255,0.10)',
     borderRadius: '28px',
@@ -1693,6 +1936,8 @@ const styles = {
     backdropFilter: 'blur(10px)',
     boxShadow: '0 18px 50px rgba(0,0,0,0.25)',
     color: '#f5efe4',
+    boxSizing: 'border-box',
+    alignSelf: 'stretch',
   },
 
   authTitle: {
@@ -1709,6 +1954,14 @@ const styles = {
     textAlign: 'center',
     marginBottom: '22px',
     color: '#f0e5d4',
+  },
+
+  authLegalRow: {
+    marginTop: '24px',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '16px',
+    flexWrap: 'wrap',
   },
 
   linkButton: {
@@ -2540,6 +2793,7 @@ const styles = {
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
+
   homeContentWideMobile: {
     width: 'calc(100% - 24px)',
     padding: '18px 0 20px',
