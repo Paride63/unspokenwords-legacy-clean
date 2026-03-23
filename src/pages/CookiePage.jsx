@@ -54,8 +54,15 @@ export default function CookiePage() {
               L’utente può gestire o disabilitare i cookie tramite le impostazioni del browser,
               sapendo che questo potrebbe compromettere il corretto funzionamento del servizio.
             </p>
-          </section>
-        </div>
-      </div>
+            </section>
+    </div>
+
+    {/* NOTA INGLESE */}
+    <div style={{ marginTop: 30, opacity: 0.8, fontSize: '0.9rem' }}>
+      <p>This page is currently available in Italian only.</p>
+      <p>An English version will be available soon.</p>
+    </div>
+
+  </div>
     )
   }
