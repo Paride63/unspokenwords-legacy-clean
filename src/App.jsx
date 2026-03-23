@@ -18,6 +18,301 @@ const MAX_AUDIO_SIZE = MAX_AUDIO_SIZE_MB * 1024 * 1024
 
 const ADMIN_EMAILS = ['papiedo@gmail.com', 'edoboccellari@gmail.com']
 
+const translations = {
+  it: {
+    cookieText:
+      'Questo sito utilizza cookie tecnici necessari al funzionamento della piattaforma. Per saperne di più, consulta la',
+    cookiePolicy: 'Cookie Policy',
+    gotIt: 'Ho capito',
+
+    unlockFullAccess: 'Sblocca accesso completo',
+
+    pleaseEnterEmailPassword: 'Inserisci email e password.',
+    acceptTermsPrivacy: 'Per registrarti devi accettare Termini e Privacy.',
+    registrationCompleted: 'Registrazione completata. Ora puoi accedere.',
+    authenticationError: 'Errore di autenticazione.',
+
+    legacyName: 'UnspokenWords Legacy',
+    heroTitle: 'Il tuo spazio personale\nper custodire ricordi,\nparole e presenza.',
+    heroLead:
+      'Legacy è uno spazio intimo e protetto dove raccogliere testi, foto, video, voce e tracce audio in un archivio personale ordinato e sempre accessibile.',
+    private: '🔒 Privato',
+    alwaysAccessible: '☁️ Sempre accessibile',
+    mediaTypes: '🎙️ Foto, voce, video, audio',
+
+    write: 'Scrivi',
+    writeText: 'Conserva pensieri, ricordi, episodi e parole importanti.',
+    record: 'Registra',
+    recordText: 'Aggiungi voce, immagini, video e tracce audio ai tuoi ricordi.',
+    protect: 'Proteggi',
+    protectText: 'Tieni tutto in uno spazio personale, semplice da ritrovare nel tempo.',
+    quote:
+      '“Non solo memoria digitale, ma un luogo personale da costruire con calma, giorno dopo giorno.”',
+
+    accessYourSpace: 'Accedi al tuo spazio personale',
+    createYourAccount: 'Crea il tuo account personale',
+    email: 'Email',
+    password: 'Password',
+    iAcceptTermsPrefix: 'Ho letto e accetto i',
+    termsAndConditions: 'Termini e Condizioni',
+    iReadPrivacyPrefix: 'Ho letto la',
+    privacyPolicy: 'Privacy Policy',
+    pleaseWait: 'Attendere...',
+    login: 'Accedi',
+    signup: 'Registrati',
+    noAccountSignup: 'Non hai un account? Registrati',
+    alreadyAccountLogin: 'Hai già un account? Accedi',
+    legal: 'Legal',
+    terms: 'Termini',
+    privacy: 'Privacy',
+    cookie: 'Cookie',
+
+    yourPersonalSpace: 'Il tuo spazio personale',
+    preserveLead:
+      'Custodisci testi, immagini, voce, video e tracce audio in uno spazio intimo, ordinato e sempre accessibile.',
+    freePlanCount: (count) => `Piano Free · ${count}/${FREE_MEMORY_LIMIT} ricordi`,
+    fullAccessActive: 'Accesso completo attivo',
+    storageUsed: 'Spazio usato',
+    freeLimitReachedShort:
+      'Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo oppure sblocca l’accesso completo.',
+
+    texts: 'Testi',
+    textsText: 'Scrivi pensieri, ricordi, episodi e note personali.',
+    voice: 'Voce',
+    voiceText: 'Registra direttamente un messaggio vocale dentro ogni ricordo.',
+    photosVideos: 'Foto e video',
+    photosVideosText: 'Conserva immagini e momenti visivi in un archivio semplice da sfogliare.',
+    music: 'Musica',
+    musicText: 'Aggiungi tracce audio e associa una colonna sonora ai tuoi ricordi.',
+
+    whatDoYouWant: 'Cosa vuoi fare?',
+    myProfile: 'Chi sono',
+    memories: 'Ricordi',
+    newMemory: 'Nuovo ricordo',
+    logout: 'Logout',
+    discreetSpace: 'Uno spazio discreto, personale e pensato per durare nel tempo.',
+
+    backHome: '← Home',
+
+    firstName: 'Nome',
+    lastName: 'Cognome',
+    nickname: 'Soprannome',
+    birthDate: 'Data di nascita',
+    birthPlace: 'Luogo di nascita',
+    personalNote: 'Nota personale',
+    profilePhotos: 'Foto del titolare',
+    uploadImages: 'Carica immagini',
+    remove: 'Rimuovi',
+    saving: 'Salvataggio...',
+    save: 'Salva',
+    profileSaveError: 'Errore nel salvataggio del profilo su Supabase.',
+
+    freePlanLabel: (count, reached) =>
+      `Piano Free · ${count}/${FREE_MEMORY_LIMIT} ricordi${reached ? ' · limite raggiunto' : ''}`,
+    freeLimitReached: 'Hai raggiunto il limite dei ricordi gratuiti.',
+    searchMemories: 'Cerca nei ricordi',
+    noMemoriesSaved: 'Nessun ricordo salvato.',
+    noMemoriesFound: 'Nessun ricordo trovato.',
+    untitled: 'Senza titolo',
+    open: 'Apri',
+    edit: 'Modifica',
+    delete: 'Elimina',
+
+    noMemorySelected: 'Nessun ricordo selezionato.',
+    memory: 'Ricordo',
+    noTextEntered: 'Nessun testo inserito.',
+    photos: 'Foto',
+    videos: 'Video',
+    audioTracks: 'Tracce audio / musicali',
+
+    unableMic: 'Impossibile accedere al microfono.',
+    imageTooLarge: (name) =>
+      `L'immagine "${name}" è troppo grande. Dimensione massima: ${MAX_IMAGE_SIZE_MB} MB.`,
+    videoTooLarge: (name) =>
+      `Il video "${name}" è troppo grande. Dimensione massima: ${MAX_VIDEO_SIZE_MB} MB.`,
+    notEnoughStorage: (mb) => `Spazio insufficiente. Il tuo piano include ${mb} MB totali.`,
+    audioTooLarge: (name) =>
+      `Il file audio "${name}" è troppo grande. Dimensione massima: ${MAX_AUDIO_SIZE_MB} MB.`,
+    editMemory: 'Modifica ricordo',
+    freeLimitEditor:
+      'Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo esistente per crearne uno nuovo, oppure sblocca l’accesso completo.',
+    title: 'Titolo',
+    text: 'Testo',
+    imageFormats: `Formati immagine · max ${MAX_IMAGE_SIZE_MB} MB per file`,
+    uploadPhotos: 'Carica foto',
+    videoFormats: `Formati video · max ${MAX_VIDEO_SIZE_MB} MB per file`,
+    uploadVideos: 'Carica video',
+    audioFormats: `File audio · max ${MAX_AUDIO_SIZE_MB} MB per file`,
+    uploadTracks: 'Carica tracce',
+    memorySaveError: 'Errore nel salvataggio del ricordo su Supabase.',
+
+    loading: 'Caricamento...',
+    loadingProfile: 'Caricamento profilo...',
+    profileLoadError: 'Errore nel caricamento del profilo da Supabase.',
+    memoriesLoadError: 'Errore nel caricamento dei ricordi da Supabase.',
+    confirmDelete: 'Vuoi davvero eliminare questo ricordo? Questa azione è definitiva.',
+    deleteError: 'Errore nell’eliminazione del ricordo.',
+
+    unlockTitle: 'Sblocca accesso completo',
+    unlockBenefits:
+      '✔️ Nessun limite nel numero di ricordi\n✔️ 500 MB di spazio inclusi\n✔️ Possibilità di aggiungere spazio in seguito\n✔️ Accesso completo alla tua storia',
+    unlockPrice: 'Accesso completo beta: €29 una tantum',
+    unlockContact: 'Per attivare l’accesso completo scrivici a:',
+    contactUs: 'Scrivici',
+    close: 'Chiudi',
+    unlockSubject: 'Richiesta sblocco accesso completo',
+
+    langShort: 'IT',
+    otherLangShort: 'EN',
+  },
+
+  en: {
+    cookieText:
+      'This site uses technical cookies necessary for the platform to function. To learn more, see the',
+    cookiePolicy: 'Cookie Policy',
+    gotIt: 'Got it',
+
+    unlockFullAccess: 'Unlock full access',
+
+    pleaseEnterEmailPassword: 'Please enter email and password.',
+    acceptTermsPrivacy: 'To sign up, you must accept the Terms and Privacy Policy.',
+    registrationCompleted: 'Registration completed. You can now log in.',
+    authenticationError: 'Authentication error.',
+
+    legacyName: 'UnspokenWords Legacy',
+    heroTitle: 'Your personal space\nto preserve memories,\nwords, and presence.',
+    heroLead:
+      'Legacy is a private and protected space where you can collect text, photos, videos, voice notes, and audio tracks in a personal archive that stays organized and always accessible.',
+    private: '🔒 Private',
+    alwaysAccessible: '☁️ Always accessible',
+    mediaTypes: '🎙️ Photos, voice, video, audio',
+
+    write: 'Write',
+    writeText: 'Keep thoughts, memories, moments, and important words.',
+    record: 'Record',
+    recordText: 'Add voice, images, videos, and audio tracks to your memories.',
+    protect: 'Protect',
+    protectText: 'Keep everything in one personal space, easy to revisit over time.',
+    quote: '“Not just digital memory, but a personal place to build slowly, day by day.”',
+
+    accessYourSpace: 'Access your personal space',
+    createYourAccount: 'Create your personal account',
+    email: 'Email',
+    password: 'Password',
+    iAcceptTermsPrefix: 'I have read and accept the',
+    termsAndConditions: 'Terms and Conditions',
+    iReadPrivacyPrefix: 'I have read the',
+    privacyPolicy: 'Privacy Policy',
+    pleaseWait: 'Please wait...',
+    login: 'Log in',
+    signup: 'Sign up',
+    noAccountSignup: 'Don’t have an account? Sign up',
+    alreadyAccountLogin: 'Already have an account? Log in',
+    legal: 'Legal',
+    terms: 'Terms',
+    privacy: 'Privacy',
+    cookie: 'Cookie',
+
+    yourPersonalSpace: 'Your personal space',
+    preserveLead:
+      'Preserve text, images, voice, videos, and audio tracks in an intimate, organized, and always accessible space.',
+    freePlanCount: (count) => `Free plan · ${count}/${FREE_MEMORY_LIMIT} memories`,
+    fullAccessActive: 'Full access active',
+    storageUsed: 'Storage used',
+    freeLimitReachedShort:
+      'You have reached the free memory limit. Delete a memory or unlock full access.',
+
+    texts: 'Texts',
+    textsText: 'Write thoughts, memories, moments, and personal notes.',
+    voice: 'Voice',
+    voiceText: 'Record a voice message directly inside each memory.',
+    photosVideos: 'Photos and videos',
+    photosVideosText: 'Keep images and visual moments in an archive that is easy to browse.',
+    music: 'Music',
+    musicText: 'Add audio tracks and connect a soundtrack to your memories.',
+
+    whatDoYouWant: 'What would you like to do?',
+    myProfile: 'My profile',
+    memories: 'Memories',
+    newMemory: 'New memory',
+    logout: 'Log out',
+    discreetSpace: 'A discreet, personal space designed to last over time.',
+
+    backHome: '← Home',
+
+    firstName: 'First name',
+    lastName: 'Last name',
+    nickname: 'Nickname',
+    birthDate: 'Date of birth',
+    birthPlace: 'Place of birth',
+    personalNote: 'Personal note',
+    profilePhotos: 'Profile photos',
+    uploadImages: 'Upload images',
+    remove: 'Remove',
+    saving: 'Saving...',
+    save: 'Save',
+    profileSaveError: 'Error saving profile to Supabase.',
+
+    freePlanLabel: (count, reached) =>
+      `Free plan · ${count}/${FREE_MEMORY_LIMIT} memories${reached ? ' · limit reached' : ''}`,
+    freeLimitReached: 'You have reached the free memory limit.',
+    searchMemories: 'Search memories',
+    noMemoriesSaved: 'No memories saved.',
+    noMemoriesFound: 'No memories found.',
+    untitled: 'Untitled',
+    open: 'Open',
+    edit: 'Edit',
+    delete: 'Delete',
+
+    noMemorySelected: 'No memory selected.',
+    memory: 'Memory',
+    noTextEntered: 'No text entered.',
+    photos: 'Photos',
+    videos: 'Videos',
+    audioTracks: 'Audio / music tracks',
+
+    unableMic: 'Unable to access the microphone.',
+    imageTooLarge: (name) =>
+      `The image "${name}" is too large. Maximum size: ${MAX_IMAGE_SIZE_MB} MB.`,
+    videoTooLarge: (name) =>
+      `The video "${name}" is too large. Maximum size: ${MAX_VIDEO_SIZE_MB} MB.`,
+    notEnoughStorage: (mb) => `Not enough storage space. Your plan includes ${mb} MB total.`,
+    audioTooLarge: (name) =>
+      `The audio file "${name}" is too large. Maximum size: ${MAX_AUDIO_SIZE_MB} MB.`,
+    editMemory: 'Edit memory',
+    freeLimitEditor:
+      'You have reached the free memory limit. Delete an existing memory to create a new one, or unlock full access.',
+    title: 'Title',
+    text: 'Text',
+    imageFormats: `Image formats · max ${MAX_IMAGE_SIZE_MB} MB per file`,
+    uploadPhotos: 'Upload photos',
+    videoFormats: `Video formats · max ${MAX_VIDEO_SIZE_MB} MB per file`,
+    uploadVideos: 'Upload videos',
+    audioFormats: `Audio files · max ${MAX_AUDIO_SIZE_MB} MB per file`,
+    uploadTracks: 'Upload tracks',
+    memorySaveError: 'Error saving memory to Supabase.',
+
+    loading: 'Loading...',
+    loadingProfile: 'Loading profile...',
+    profileLoadError: 'Error loading profile from Supabase.',
+    memoriesLoadError: 'Error loading memories from Supabase.',
+    confirmDelete: 'Do you really want to delete this memory? This action is permanent.',
+    deleteError: 'Error deleting memory.',
+
+    unlockTitle: 'Unlock full access',
+    unlockBenefits:
+      '✔️ No limit on the number of memories\n✔️ 500 MB of storage included\n✔️ Option to add more storage later\n✔️ Full access to your personal story',
+    unlockPrice: 'Beta full access: €29 one-time',
+    unlockContact: 'To activate full access, write to us at:',
+    contactUs: 'Contact us',
+    close: 'Close',
+    unlockSubject: 'Request to unlock full access',
+
+    langShort: 'EN',
+    otherLangShort: 'IT',
+  },
+}
+
 function safeJsonParse(value, fallback) {
   if (!value) return fallback
   try {
@@ -33,6 +328,14 @@ function normalizeEmail(email) {
 
 function formatMb(bytes) {
   return (Number(bytes || 0) / 1024 / 1024).toFixed(1)
+}
+
+function getBrowserLang() {
+  if (typeof window === 'undefined') return 'it'
+  const saved = localStorage.getItem('uw_lang')
+  if (saved === 'it' || saved === 'en') return saved
+  const browser = (navigator.language || '').toLowerCase()
+  return browser.startsWith('it') ? 'it' : 'en'
 }
 
 async function uploadFileToBucket(bucket, item, folder = 'uploads') {
@@ -61,26 +364,50 @@ async function uploadFileToBucket(bucket, item, folder = 'uploads') {
   }
 }
 
-function CookieBanner({ onClose }) {
+function LanguageSwitch({ lang, setLang, compact = false }) {
   return (
-    <div style={styles.cookieBanner}>
-      <div style={styles.cookieBannerText}>
-        Questo sito utilizza cookie tecnici necessari al funzionamento della piattaforma. Per
-        saperne di più, consulta la{' '}
-        <a href="/cookie" style={styles.cookieBannerLink}>
-          Cookie Policy
-        </a>
-        .
-      </div>
-
-      <button style={styles.cookieBannerButton} onClick={onClose}>
-        Ho capito
+    <div style={{ ...styles.langSwitch, ...(compact ? styles.langSwitchCompact : {}) }}>
+      <button
+        style={{
+          ...styles.langButton,
+          ...(lang === 'it' ? styles.langButtonActive : {}),
+        }}
+        onClick={() => setLang('it')}
+      >
+        IT
+      </button>
+      <button
+        style={{
+          ...styles.langButton,
+          ...(lang === 'en' ? styles.langButtonActive : {}),
+        }}
+        onClick={() => setLang('en')}
+      >
+        EN
       </button>
     </div>
   )
 }
 
-function UnlockButton({ onClick, fullWidth = false }) {
+function CookieBanner({ onClose, t }) {
+  return (
+    <div style={styles.cookieBanner}>
+      <div style={styles.cookieBannerText}>
+        {t.cookieText}{' '}
+        <a href="/cookie" style={styles.cookieBannerLink}>
+          {t.cookiePolicy}
+        </a>
+        .
+      </div>
+
+      <button style={styles.cookieBannerButton} onClick={onClose}>
+        {t.gotIt}
+      </button>
+    </div>
+  )
+}
+
+function UnlockButton({ onClick, fullWidth = false, t }) {
   return (
     <button
       style={{
@@ -89,12 +416,12 @@ function UnlockButton({ onClick, fullWidth = false }) {
       }}
       onClick={onClick}
     >
-      Sblocca memoria completa
+      {t.unlockFullAccess}
     </button>
   )
 }
 
-function AuthScreen() {
+function AuthScreen({ lang, setLang, t }) {
   const [mode, setMode] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -109,7 +436,7 @@ function AuthScreen() {
       setLoading(true)
 
       if (!email || !password) {
-        alert('Inserisci email e password.')
+        alert(t.pleaseEnterEmailPassword)
         return
       }
 
@@ -117,7 +444,7 @@ function AuthScreen() {
 
       if (mode === 'register') {
         if (!acceptTerms || !acceptPrivacy) {
-          alert('Per registrarti devi accettare Termini e Privacy.')
+          alert(t.acceptTermsPrivacy)
           return
         }
 
@@ -135,7 +462,7 @@ function AuthScreen() {
 
         if (error) throw error
 
-        alert('Registrazione completata. Ora puoi accedere.')
+        alert(t.registrationCompleted)
         setMode('login')
       } else {
         const { error } = await supabase.auth.signInWithPassword({
@@ -147,7 +474,7 @@ function AuthScreen() {
       }
     } catch (err) {
       console.error(err)
-      alert(err.message || 'Errore di autenticazione.')
+      alert(err.message || t.authenticationError)
     } finally {
       setLoading(false)
     }
@@ -157,6 +484,10 @@ function AuthScreen() {
     <div style={styles.authPage}>
       <div style={styles.homeOverlay} />
       <div style={styles.homeVignette} />
+
+      <div style={styles.langTopBar}>
+        <LanguageSwitch lang={lang} setLang={setLang} />
+      </div>
 
       <div
         style={{
@@ -176,66 +507,50 @@ function AuthScreen() {
               ...(isMobile ? styles.authHeroPanelMobile : {}),
             }}
           >
-            <div style={styles.authBadge}>UnspokenWords Legacy</div>
+            <div style={styles.authBadge}>{t.legacyName}</div>
 
             <h1 style={styles.authHeroTitle}>
-              Il tuo spazio personale
-              <br />
-              per custodire ricordi,
-              <br />
-              parole e presenza.
+              {t.heroTitle.split('\n').map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
             </h1>
 
-            <div style={styles.authHeroLead}>
-              Legacy è uno spazio intimo e protetto dove raccogliere testi, foto, video,
-              voce e tracce audio in un archivio personale ordinato e sempre accessibile.
-            </div>
+            <div style={styles.authHeroLead}>{t.heroLead}</div>
 
             <div style={styles.authHeroPills}>
-              <span style={styles.authHeroPill}>🔒 Privato</span>
-              <span style={styles.authHeroPill}>☁️ Sempre accessibile</span>
-              <span style={styles.authHeroPill}>🎙️ Foto, voce, video, audio</span>
+              <span style={styles.authHeroPill}>{t.private}</span>
+              <span style={styles.authHeroPill}>{t.alwaysAccessible}</span>
+              <span style={styles.authHeroPill}>{t.mediaTypes}</span>
             </div>
 
             <div style={styles.authFeatureGrid}>
               <div style={styles.authFeatureCard}>
-                <div style={styles.authFeatureTitle}>Scrivi</div>
-                <div style={styles.authFeatureText}>
-                  Conserva pensieri, ricordi, episodi e parole importanti.
-                </div>
+                <div style={styles.authFeatureTitle}>{t.write}</div>
+                <div style={styles.authFeatureText}>{t.writeText}</div>
               </div>
 
               <div style={styles.authFeatureCard}>
-                <div style={styles.authFeatureTitle}>Registra</div>
-                <div style={styles.authFeatureText}>
-                  Aggiungi voce, immagini, video e tracce audio ai tuoi ricordi.
-                </div>
+                <div style={styles.authFeatureTitle}>{t.record}</div>
+                <div style={styles.authFeatureText}>{t.recordText}</div>
               </div>
 
               <div style={styles.authFeatureCard}>
-                <div style={styles.authFeatureTitle}>Proteggi</div>
-                <div style={styles.authFeatureText}>
-                  Tieni tutto in uno spazio personale, semplice da ritrovare nel tempo.
-                </div>
+                <div style={styles.authFeatureTitle}>{t.protect}</div>
+                <div style={styles.authFeatureText}>{t.protectText}</div>
               </div>
             </div>
 
-            <div style={styles.authQuoteBox}>
-              “Non solo memoria digitale, ma un luogo personale da costruire con calma,
-              giorno dopo giorno.”
-            </div>
+            <div style={styles.authQuoteBox}>{t.quote}</div>
           </div>
 
           <div style={styles.authCard}>
             <h1 style={styles.authTitle}>Memories</h1>
             <div style={styles.authSubtitle}>
-              {mode === 'login'
-                ? 'Accedi al tuo spazio personale'
-                : 'Crea il tuo account personale'}
+              {mode === 'login' ? t.accessYourSpace : t.createYourAccount}
             </div>
 
             <div style={styles.field}>
-              <div style={styles.label}>Email</div>
+              <div style={styles.label}>{t.email}</div>
               <input
                 type="email"
                 autoComplete={mode === 'login' ? 'username' : 'email'}
@@ -246,7 +561,7 @@ function AuthScreen() {
             </div>
 
             <div style={styles.field}>
-              <div style={styles.label}>Password</div>
+              <div style={styles.label}>{t.password}</div>
               <input
                 type="password"
                 autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
@@ -265,9 +580,9 @@ function AuthScreen() {
                     onChange={(e) => setAcceptTerms(e.target.checked)}
                   />
                   <span>
-                    Ho letto e accetto i{' '}
+                    {t.iAcceptTermsPrefix}{' '}
                     <a href="/termini" style={styles.inlineLink}>
-                      Termini e Condizioni
+                      {t.termsAndConditions}
                     </a>
                   </span>
                 </label>
@@ -279,9 +594,9 @@ function AuthScreen() {
                     onChange={(e) => setAcceptPrivacy(e.target.checked)}
                   />
                   <span>
-                    Ho letto la{' '}
+                    {t.iReadPrivacyPrefix}{' '}
                     <a href="/privacy" style={styles.inlineLink}>
-                      Privacy Policy
+                      {t.privacyPolicy}
                     </a>
                   </span>
                 </label>
@@ -290,7 +605,7 @@ function AuthScreen() {
 
             <div style={styles.actions}>
               <button style={styles.primaryButton} onClick={handleSubmit} disabled={loading}>
-                {loading ? 'Attendere...' : mode === 'login' ? 'Accedi' : 'Registrati'}
+                {loading ? t.pleaseWait : mode === 'login' ? t.login : t.signup}
               </button>
             </div>
 
@@ -299,24 +614,22 @@ function AuthScreen() {
                 style={styles.linkButton}
                 onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
               >
-                {mode === 'login'
-                  ? 'Non hai un account? Registrati'
-                  : 'Hai già un account? Accedi'}
+                {mode === 'login' ? t.noAccountSignup : t.alreadyAccountLogin}
               </button>
             </div>
 
             <div style={styles.authLegalRow}>
               <a href="/legal" style={styles.legalLink}>
-                Legal
+                {t.legal}
               </a>
               <a href="/termini" style={styles.legalLink}>
-                Termini
+                {t.terms}
               </a>
               <a href="/privacy" style={styles.legalLink}>
-                Privacy
+                {t.privacy}
               </a>
               <a href="/cookie" style={styles.legalLink}>
-                Cookie
+                {t.cookie}
               </a>
             </div>
           </div>
@@ -334,6 +647,9 @@ function Home({
   onUnlock,
   storageUsedBytes,
   storageLimitMb,
+  lang,
+  setLang,
+  t,
 }) {
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -345,6 +661,10 @@ function Home({
     <div style={styles.home}>
       <div style={styles.homeOverlay} />
       <div style={styles.homeVignette} />
+
+      <div style={styles.langTopBar}>
+        <LanguageSwitch lang={lang} setLang={setLang} />
+      </div>
 
       <div
         style={{
@@ -364,68 +684,52 @@ function Home({
               ...(isMobile ? styles.homeIntroPanelMobile : {}),
             }}
           >
-            <div style={styles.homeSmallLabel}>Il tuo spazio personale</div>
+            <div style={styles.homeSmallLabel}>{t.yourPersonalSpace}</div>
             <h1 style={styles.homeTitle}>Memories</h1>
 
-            <div style={styles.homeLead}>
-              Custodisci testi, immagini, voce, video e tracce audio in uno spazio intimo,
-              ordinato e sempre accessibile.
-            </div>
+            <div style={styles.homeLead}>{t.preserveLead}</div>
 
             <div style={styles.homeStatsRow}>
               {!isUnlocked ? (
-                <div style={styles.limitBadge}>
-                  Piano Free · {memoryCount}/{FREE_MEMORY_LIMIT} ricordi
-                </div>
+                <div style={styles.limitBadge}>{t.freePlanCount(memoryCount)}</div>
               ) : (
-                <div style={styles.limitBadge}>Accesso completo attivo</div>
+                <div style={styles.limitBadge}>{t.fullAccessActive}</div>
               )}
 
               <div style={styles.homeInfoBadge}>
-                Spazio usato · {formatMb(storageUsedBytes)} / {Number(storageLimitMb || 500)} MB
+                {t.storageUsed} · {formatMb(storageUsedBytes)} / {Number(storageLimitMb || 500)} MB
               </div>
             </div>
 
             {!isUnlocked && isLimitReached && (
               <>
-                <div style={styles.limitWarningHome}>
-                  Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo oppure sblocca
-                  la memoria completa.
-                </div>
+                <div style={styles.limitWarningHome}>{t.freeLimitReachedShort}</div>
 
                 <div style={styles.homeUpgradeWrapStart}>
-                  <UnlockButton onClick={onUnlock} />
+                  <UnlockButton onClick={onUnlock} t={t} />
                 </div>
               </>
             )}
 
             <div style={styles.homeFeatureGrid}>
               <div style={styles.homeFeatureCard}>
-                <div style={styles.homeFeatureTitle}>Testi</div>
-                <div style={styles.homeFeatureText}>
-                  Scrivi pensieri, ricordi, episodi e note personali.
-                </div>
+                <div style={styles.homeFeatureTitle}>{t.texts}</div>
+                <div style={styles.homeFeatureText}>{t.textsText}</div>
               </div>
 
               <div style={styles.homeFeatureCard}>
-                <div style={styles.homeFeatureTitle}>Voce</div>
-                <div style={styles.homeFeatureText}>
-                  Registra direttamente un messaggio vocale dentro ogni ricordo.
-                </div>
+                <div style={styles.homeFeatureTitle}>{t.voice}</div>
+                <div style={styles.homeFeatureText}>{t.voiceText}</div>
               </div>
 
               <div style={styles.homeFeatureCard}>
-                <div style={styles.homeFeatureTitle}>Foto e video</div>
-                <div style={styles.homeFeatureText}>
-                  Conserva immagini e momenti visivi in un archivio semplice da sfogliare.
-                </div>
+                <div style={styles.homeFeatureTitle}>{t.photosVideos}</div>
+                <div style={styles.homeFeatureText}>{t.photosVideosText}</div>
               </div>
 
               <div style={styles.homeFeatureCard}>
-                <div style={styles.homeFeatureTitle}>Musica</div>
-                <div style={styles.homeFeatureText}>
-                  Aggiungi tracce audio e associa una colonna sonora ai tuoi ricordi.
-                </div>
+                <div style={styles.homeFeatureTitle}>{t.music}</div>
+                <div style={styles.homeFeatureText}>{t.musicText}</div>
               </div>
             </div>
           </div>
@@ -436,61 +740,57 @@ function Home({
               ...(isMobile ? styles.homeActionPanelMobile : {}),
             }}
           >
-            <div style={styles.homeActionTitle}>Cosa vuoi fare?</div>
+            <div style={styles.homeActionTitle}>{t.whatDoYouWant}</div>
 
             <div style={styles.homeMenuVertical}>
               <button style={styles.homeMenuButtonWide} onClick={() => go('profile')}>
-                Chi sono
+                {t.myProfile}
               </button>
 
               <button style={styles.homeMenuButtonWide} onClick={() => go('memories')}>
-                Ricordi
+                {t.memories}
               </button>
 
               <button
                 style={styles.homeMenuButtonWide}
                 onClick={() => {
                   if (!isUnlocked && isLimitReached) {
-                    alert(
-                      'Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo esistente oppure sblocca la memoria completa.'
-                    )
+                    alert(t.freeLimitEditor)
                     return
                   }
                   go('editor')
                 }}
               >
-                Nuovo ricordo
+                {t.newMemory}
               </button>
 
               {!isUnlocked && (
                 <button style={styles.homeMenuButtonWideSecondary} onClick={onUnlock}>
-                  Sblocca memoria completa
+                  {t.unlockFullAccess}
                 </button>
               )}
 
               <button style={styles.homeMenuButtonWideGhost} onClick={handleLogout}>
-                Logout
+                {t.logout}
               </button>
             </div>
 
-            <div style={styles.homeActionFootnote}>
-              Uno spazio discreto, personale e pensato per durare nel tempo.
-            </div>
+            <div style={styles.homeActionFootnote}>{t.discreetSpace}</div>
           </div>
         </div>
 
         <div style={styles.legalLinks}>
           <a href="/legal" style={styles.legalLink}>
-            Legal
+            {t.legal}
           </a>
           <a href="/termini" style={styles.legalLink}>
-            Termini
+            {t.terms}
           </a>
           <a href="/privacy" style={styles.legalLink}>
-            Privacy
+            {t.privacy}
           </a>
           <a href="/cookie" style={styles.legalLink}>
-            Cookie
+            {t.cookie}
           </a>
         </div>
       </div>
@@ -498,16 +798,20 @@ function Home({
   )
 }
 
-function PageShell({ title, go, children }) {
+function PageShell({ title, go, children, lang, setLang, t }) {
   return (
     <div style={styles.page}>
       <div style={styles.homeOverlay} />
       <div style={styles.pageTint} />
       <div style={styles.homeVignette} />
 
+      <div style={styles.langTopBar}>
+        <LanguageSwitch lang={lang} setLang={setLang} />
+      </div>
+
       <div style={styles.pageInner}>
         <button style={styles.backButton} onClick={() => go('home')}>
-          ← Home
+          {t.backHome}
         </button>
 
         <h2 style={styles.pageTitle}>{title}</h2>
@@ -533,7 +837,7 @@ function ImageLightbox({ src, onClose }) {
   )
 }
 
-function Profile({ profile, session, go, refreshProfile }) {
+function Profile({ profile, session, go, refreshProfile, lang, setLang, t }) {
   const [local, setLocal] = useState({
     id: profile.id || '',
     firstName: profile.firstName || '',
@@ -635,46 +939,46 @@ function Profile({ profile, session, go, refreshProfile }) {
       go('home')
     } catch (err) {
       console.error(err)
-      alert('Errore nel salvataggio del profilo su Supabase.')
+      alert(t.profileSaveError)
     } finally {
       setSaving(false)
     }
   }
 
   return (
-    <PageShell title="Chi sono" go={go}>
+    <PageShell title={t.myProfile} go={go} lang={lang} setLang={setLang} t={t}>
       <div style={styles.panel}>
         <div style={styles.formGrid}>
           <Field
-            label="Nome"
+            label={t.firstName}
             value={local.firstName}
             onChange={(v) => setLocal({ ...local, firstName: v })}
           />
           <Field
-            label="Cognome"
+            label={t.lastName}
             value={local.lastName}
             onChange={(v) => setLocal({ ...local, lastName: v })}
           />
           <Field
-            label="Soprannome"
+            label={t.nickname}
             value={local.nickname}
             onChange={(v) => setLocal({ ...local, nickname: v })}
           />
           <Field
-            label="Data di nascita"
+            label={t.birthDate}
             value={local.birthDate}
             type="date"
             onChange={(v) => setLocal({ ...local, birthDate: v })}
           />
           <Field
-            label="Luogo di nascita"
+            label={t.birthPlace}
             value={local.birthPlace}
             onChange={(v) => setLocal({ ...local, birthPlace: v })}
           />
         </div>
 
         <div style={{ marginTop: 20 }}>
-          <div style={styles.label}>Nota personale</div>
+          <div style={styles.label}>{t.personalNote}</div>
           <textarea
             style={styles.textarea}
             value={local.bio}
@@ -684,10 +988,10 @@ function Profile({ profile, session, go, refreshProfile }) {
       </div>
 
       <div style={styles.panel}>
-        <div style={styles.sectionTitle}>Foto del titolare</div>
+        <div style={styles.sectionTitle}>{t.profilePhotos}</div>
 
         <label style={styles.uploadLabel}>
-          Carica immagini
+          {t.uploadImages}
           <input
             type="file"
             multiple
@@ -705,7 +1009,7 @@ function Profile({ profile, session, go, refreshProfile }) {
                   <img src={img.url} alt={img.name} style={styles.imagePreview} />
                 </button>
                 <button style={styles.smallGhostButton} onClick={() => removeImage(img.id)}>
-                  Rimuovi
+                  {t.remove}
                 </button>
               </div>
             ))}
@@ -715,7 +1019,7 @@ function Profile({ profile, session, go, refreshProfile }) {
 
       <div style={styles.actions}>
         <button style={styles.primaryButton} onClick={saveProfile} disabled={saving}>
-          {saving ? 'Salvataggio...' : 'Salva'}
+          {saving ? t.saving : t.save}
         </button>
       </div>
 
@@ -733,6 +1037,9 @@ function Memories({
   isUnlocked,
   isLimitReached,
   onUnlock,
+  lang,
+  setLang,
+  t,
 }) {
   const [search, setSearch] = useState('')
 
@@ -748,36 +1055,33 @@ function Memories({
   }, [memories, search])
 
   return (
-    <PageShell title="Ricordi" go={go}>
+    <PageShell title={t.memories} go={go} lang={lang} setLang={setLang} t={t}>
       <div style={styles.actionsTop}>
         <button
           style={styles.primaryButton}
           onClick={() => {
             if (!isUnlocked && isLimitReached) {
-              alert(
-                'Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo esistente oppure sblocca la memoria completa.'
-              )
+              alert(t.freeLimitEditor)
               return
             }
             setEditing(null)
             go('editor')
           }}
         >
-          Nuovo ricordo
+          {t.newMemory}
         </button>
       </div>
 
       {!isUnlocked && (
         <div style={styles.freeInfoPanel}>
-          Piano Free · {memories.length}/{FREE_MEMORY_LIMIT} ricordi
-          {isLimitReached ? ' · limite raggiunto' : ''}
+          {t.freePlanLabel(memories.length, isLimitReached)}
         </div>
       )}
 
       {!isUnlocked && isLimitReached && (
         <div style={styles.unlockPanel}>
-          <div style={styles.unlockText}>Hai raggiunto il limite dei ricordi gratuiti.</div>
-          <UnlockButton onClick={onUnlock} />
+          <div style={styles.unlockText}>{t.freeLimitReached}</div>
+          <UnlockButton onClick={onUnlock} t={t} />
         </div>
       )}
 
@@ -785,21 +1089,21 @@ function Memories({
         <input
           style={styles.searchInput}
           type="text"
-          placeholder="Cerca nei ricordi"
+          placeholder={t.searchMemories}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
       {memories.length === 0 ? (
-        <div style={styles.emptyPanel}>Nessun ricordo salvato.</div>
+        <div style={styles.emptyPanel}>{t.noMemoriesSaved}</div>
       ) : filteredMemories.length === 0 ? (
-        <div style={styles.emptyPanel}>Nessun ricordo trovato.</div>
+        <div style={styles.emptyPanel}>{t.noMemoriesFound}</div>
       ) : (
         <div style={styles.memoryGrid}>
           {filteredMemories.map((memory) => (
             <div key={memory.id} style={styles.memoryCard}>
-              <div style={styles.memoryCardTitle}>{memory.title || 'Senza titolo'}</div>
+              <div style={styles.memoryCardTitle}>{memory.title || t.untitled}</div>
 
               <div style={styles.memoryCardText}>
                 {memory.text ? memory.text.slice(0, 120) : ''}
@@ -820,7 +1124,7 @@ function Memories({
                     go('detail')
                   }}
                 >
-                  Apri
+                  {t.open}
                 </button>
 
                 <button
@@ -830,11 +1134,11 @@ function Memories({
                     go('editor')
                   }}
                 >
-                  Modifica
+                  {t.edit}
                 </button>
 
                 <button style={styles.smallDeleteButton} onClick={() => deleteMemory(memory.id)}>
-                  Elimina
+                  {t.delete}
                 </button>
               </div>
             </div>
@@ -845,33 +1149,33 @@ function Memories({
   )
 }
 
-function MemoryDetail({ memory, go, setEditing, deleteMemory }) {
+function MemoryDetail({ memory, go, setEditing, deleteMemory, lang, setLang, t }) {
   const [previewSrc, setPreviewSrc] = useState(null)
 
   if (!memory) {
     return (
-      <PageShell title="Ricordo" go={go}>
-        <div style={styles.emptyPanel}>Nessun ricordo selezionato.</div>
+      <PageShell title={t.memory} go={go} lang={lang} setLang={setLang} t={t}>
+        <div style={styles.emptyPanel}>{t.noMemorySelected}</div>
       </PageShell>
     )
   }
 
   return (
-    <PageShell title={memory.title || 'Ricordo'} go={go}>
+    <PageShell title={memory.title || t.memory} go={go} lang={lang} setLang={setLang} t={t}>
       <div style={styles.panel}>
-        <div style={styles.detailTextBlock}>{memory.text || 'Nessun testo inserito.'}</div>
+        <div style={styles.detailTextBlock}>{memory.text || t.noTextEntered}</div>
       </div>
 
       {memory.audio?.voiceUrl && (
         <div style={styles.voicePanel}>
-          <div style={styles.voiceTitle}>Voce</div>
+          <div style={styles.voiceTitle}>{t.voice}</div>
           <audio controls src={memory.audio.voiceUrl} style={{ width: '100%' }} />
         </div>
       )}
 
       {memory.images?.length > 0 && (
         <div style={styles.panel}>
-          <div style={styles.sectionTitle}>Foto</div>
+          <div style={styles.sectionTitle}>{t.photos}</div>
           <div style={styles.imageGrid}>
             {memory.images.map((img) => (
               <button
@@ -888,7 +1192,7 @@ function MemoryDetail({ memory, go, setEditing, deleteMemory }) {
 
       {memory.videos?.length > 0 && (
         <div style={styles.panel}>
-          <div style={styles.sectionTitle}>Video</div>
+          <div style={styles.sectionTitle}>{t.videos}</div>
           <div style={styles.mediaGrid}>
             {memory.videos.map((video) => (
               <div key={video.id} style={styles.mediaCard}>
@@ -901,7 +1205,7 @@ function MemoryDetail({ memory, go, setEditing, deleteMemory }) {
 
       {memory.audio?.tracks?.length > 0 && (
         <div style={styles.panel}>
-          <div style={styles.sectionTitle}>Tracce audio / musicali</div>
+          <div style={styles.sectionTitle}>{t.audioTracks}</div>
           <div style={styles.trackList}>
             {memory.audio.tracks.map((track) => (
               <div key={track.id} style={styles.trackItem}>
@@ -921,11 +1225,11 @@ function MemoryDetail({ memory, go, setEditing, deleteMemory }) {
             go('editor')
           }}
         >
-          Modifica
+          {t.edit}
         </button>
 
         <button style={styles.deleteButtonLarge} onClick={() => deleteMemory(memory.id, true)}>
-          Elimina
+          {t.delete}
         </button>
       </div>
 
@@ -947,6 +1251,9 @@ function Editor({
   storageLimitMb,
   storageUsedBytes,
   onUnlock,
+  lang,
+  setLang,
+  t,
 }) {
   const [data, setData] = useState(
     editing || {
@@ -1021,7 +1328,7 @@ function Editor({
       recorder.start()
       setRecording(true)
     } catch {
-      alert('Impossibile accedere al microfono.')
+      alert(t.unableMic)
     }
   }
 
@@ -1040,21 +1347,17 @@ function Editor({
 
     for (const file of incomingFiles) {
       if (field === 'images' && file.size > MAX_IMAGE_SIZE) {
-        alert(
-          `L'immagine "${file.name}" è troppo grande. Dimensione massima: ${MAX_IMAGE_SIZE_MB} MB.`
-        )
+        alert(t.imageTooLarge(file.name))
         continue
       }
 
       if (field === 'videos' && file.size > MAX_VIDEO_SIZE) {
-        alert(
-          `Il video "${file.name}" è troppo grande. Dimensione massima: ${MAX_VIDEO_SIZE_MB} MB.`
-        )
+        alert(t.videoTooLarge(file.name))
         continue
       }
 
       if (file.size > remainingBytes) {
-        alert(`Spazio insufficiente. Il tuo piano include ${storageLimitMb} MB totali.`)
+        alert(t.notEnoughStorage(storageLimitMb))
         continue
       }
 
@@ -1085,14 +1388,12 @@ function Editor({
 
     for (const file of incomingFiles) {
       if (file.size > MAX_AUDIO_SIZE) {
-        alert(
-          `Il file audio "${file.name}" è troppo grande. Dimensione massima: ${MAX_AUDIO_SIZE_MB} MB.`
-        )
+        alert(t.audioTooLarge(file.name))
         continue
       }
 
       if (file.size > remainingBytes) {
-        alert(`Spazio insufficiente. Il tuo piano include ${storageLimitMb} MB totali.`)
+        alert(t.notEnoughStorage(storageLimitMb))
         continue
       }
 
@@ -1138,9 +1439,7 @@ function Editor({
   const saveMemory = async () => {
     try {
       if (isLimitReached) {
-        alert(
-          'Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo esistente oppure sblocca la memoria completa.'
-        )
+        alert(t.freeLimitEditor)
         return
       }
 
@@ -1255,32 +1554,33 @@ function Editor({
       go('memories')
     } catch (err) {
       console.error(err)
-      alert('Errore nel salvataggio del ricordo su Supabase.')
+      alert(t.memorySaveError)
     } finally {
       setSaving(false)
     }
   }
 
   return (
-    <PageShell title={editing ? 'Modifica ricordo' : 'Nuovo ricordo'} go={go}>
-      {isLimitReached && (
-        <div style={styles.limitPanel}>
-          Hai raggiunto il limite dei ricordi gratuiti. Elimina un ricordo esistente per crearne
-          uno nuovo, oppure sblocca la memoria completa.
-        </div>
-      )}
+    <PageShell
+      title={editing ? t.editMemory : t.newMemory}
+      go={go}
+      lang={lang}
+      setLang={setLang}
+      t={t}
+    >
+      {isLimitReached && <div style={styles.limitPanel}>{t.freeLimitEditor}</div>}
 
       {!isUnlocked && isLimitReached && (
         <div style={styles.unlockPanel}>
-          <UnlockButton onClick={onUnlock} />
+          <UnlockButton onClick={onUnlock} t={t} />
         </div>
       )}
 
       <div style={styles.panel}>
-        <Field label="Titolo" value={data.title} onChange={(v) => setData({ ...data, title: v })} />
+        <Field label={t.title} value={data.title} onChange={(v) => setData({ ...data, title: v })} />
 
         <div style={{ marginTop: 20 }}>
-          <div style={styles.label}>Testo</div>
+          <div style={styles.label}>{t.text}</div>
           <textarea
             style={styles.textareaLarge}
             value={data.text}
@@ -1290,12 +1590,12 @@ function Editor({
       </div>
 
       <div style={styles.voicePanel}>
-        <div style={styles.voiceTitle}>Voce</div>
+        <div style={styles.voiceTitle}>{t.voice}</div>
 
         <div style={styles.voiceActions}>
           {!recording ? (
             <button style={styles.primaryButton} onClick={startRecording}>
-              Registra
+              {t.record}
             </button>
           ) : (
             <button style={styles.stopButton} onClick={stopRecording}>
@@ -1312,11 +1612,11 @@ function Editor({
       </div>
 
       <div style={styles.panel}>
-        <div style={styles.sectionTitle}>Foto</div>
-        <div style={styles.uploadHint}>Formati immagine · max {MAX_IMAGE_SIZE_MB} MB per file</div>
+        <div style={styles.sectionTitle}>{t.photos}</div>
+        <div style={styles.uploadHint}>{t.imageFormats}</div>
 
         <label style={styles.uploadLabel}>
-          Carica foto
+          {t.uploadPhotos}
           <input
             type="file"
             multiple
@@ -1334,7 +1634,7 @@ function Editor({
                   <img src={img.url} alt={img.name} style={styles.imagePreview} />
                 </button>
                 <button style={styles.smallGhostButton} onClick={() => removeFile('images', img.id)}>
-                  Rimuovi
+                  {t.remove}
                 </button>
               </div>
             ))}
@@ -1343,11 +1643,11 @@ function Editor({
       </div>
 
       <div style={styles.panel}>
-        <div style={styles.sectionTitle}>Video</div>
-        <div style={styles.uploadHint}>Formati video · max {MAX_VIDEO_SIZE_MB} MB per file</div>
+        <div style={styles.sectionTitle}>{t.videos}</div>
+        <div style={styles.uploadHint}>{t.videoFormats}</div>
 
         <label style={styles.uploadLabel}>
-          Carica video
+          {t.uploadVideos}
           <input
             type="file"
             multiple
@@ -1363,7 +1663,7 @@ function Editor({
               <div key={video.id} style={styles.mediaCard}>
                 <video src={video.url} controls style={styles.videoPreview} />
                 <button style={styles.smallGhostButton} onClick={() => removeFile('videos', video.id)}>
-                  Rimuovi
+                  {t.remove}
                 </button>
               </div>
             ))}
@@ -1372,11 +1672,11 @@ function Editor({
       </div>
 
       <div style={styles.panel}>
-        <div style={styles.sectionTitle}>Tracce audio / musicali</div>
-        <div style={styles.uploadHint}>File audio · max {MAX_AUDIO_SIZE_MB} MB per file</div>
+        <div style={styles.sectionTitle}>{t.audioTracks}</div>
+        <div style={styles.uploadHint}>{t.audioFormats}</div>
 
         <label style={styles.uploadLabel}>
-          Carica tracce
+          {t.uploadTracks}
           <input
             type="file"
             multiple
@@ -1393,7 +1693,7 @@ function Editor({
                 <div style={styles.trackName}>{track.name}</div>
                 <audio controls src={track.url} style={{ width: '100%' }} />
                 <button style={styles.smallGhostButton} onClick={() => removeTrack(track.id)}>
-                  Rimuovi
+                  {t.remove}
                 </button>
               </div>
             ))}
@@ -1410,7 +1710,7 @@ function Editor({
           onClick={saveMemory}
           disabled={saving || isLimitReached}
         >
-          {saving ? 'Salvataggio...' : 'Salva'}
+          {saving ? t.saving : t.save}
         </button>
       </div>
 
@@ -1436,6 +1736,7 @@ function Field({ label, value, onChange, type = 'text' }) {
 export default function App() {
   const path = window.location.pathname
 
+  const [lang, setLang] = useState(getBrowserLang())
   const [cookieNoticeSeen, setCookieNoticeSeen] = useState(
     localStorage.getItem('uw_cookie_notice_seen') === 'true'
   )
@@ -1449,6 +1750,12 @@ export default function App() {
   const [session, setSession] = useState(null)
   const [showUnlockModal, setShowUnlockModal] = useState(false)
   const [authLoading, setAuthLoading] = useState(true)
+
+  const t = translations[lang] || translations.it
+
+  useEffect(() => {
+    localStorage.setItem('uw_lang', lang)
+  }, [lang])
 
   const dismissCookieNotice = () => {
     localStorage.setItem('uw_cookie_notice_seen', 'true')
@@ -1538,7 +1845,7 @@ export default function App() {
       })
     } catch (err) {
       console.error(err)
-      alert('Errore nel caricamento del profilo da Supabase.')
+      alert(t.profileLoadError)
     } finally {
       setLoadingProfile(false)
     }
@@ -1574,17 +1881,14 @@ export default function App() {
       setMemories(normalized)
     } catch (err) {
       console.error(err)
-      alert('Errore nel caricamento dei ricordi da Supabase.')
+      alert(t.memoriesLoadError)
     } finally {
       setLoadingMemories(false)
     }
   }
 
   const deleteMemory = async (memoryId, goBackToList = false) => {
-    const confirmed = window.confirm(
-      'Vuoi davvero eliminare questo ricordo? Questa azione è definitiva.'
-    )
-
+    const confirmed = window.confirm(t.confirmDelete)
     if (!confirmed) return
 
     try {
@@ -1596,13 +1900,8 @@ export default function App() {
 
       if (error) throw error
 
-      if (editing?.id === memoryId) {
-        setEditing(null)
-      }
-
-      if (viewing?.id === memoryId) {
-        setViewing(null)
-      }
+      if (editing?.id === memoryId) setEditing(null)
+      if (viewing?.id === memoryId) setViewing(null)
 
       await refreshMemories()
 
@@ -1611,7 +1910,7 @@ export default function App() {
       }
     } catch (err) {
       console.error(err)
-      alert('Errore nell’eliminazione del ricordo.')
+      alert(t.deleteError)
     }
   }
 
@@ -1637,7 +1936,10 @@ export default function App() {
       <div style={styles.authPage}>
         <div style={styles.homeOverlay} />
         <div style={styles.homeVignette} />
-        <div style={styles.authCard}>Caricamento...</div>
+        <div style={styles.langTopBar}>
+          <LanguageSwitch lang={lang} setLang={setLang} />
+        </div>
+        <div style={styles.authCard}>{t.loading}</div>
       </div>
     )
   }
@@ -1645,8 +1947,8 @@ export default function App() {
   if (!session) {
     return (
       <>
-        <AuthScreen />
-        {!cookieNoticeSeen && <CookieBanner onClose={dismissCookieNotice} />}
+        <AuthScreen lang={lang} setLang={setLang} t={t} />
+        {!cookieNoticeSeen && <CookieBanner onClose={dismissCookieNotice} t={t} />}
       </>
     )
   }
@@ -1662,31 +1964,30 @@ export default function App() {
           onUnlock={handleUnlock}
           storageUsedBytes={Number(profile.storageUsedBytes || 0)}
           storageLimitMb={Number(profile.storageLimitMb || 500)}
+          lang={lang}
+          setLang={setLang}
+          t={t}
         />
 
-        {!cookieNoticeSeen && <CookieBanner onClose={dismissCookieNotice} />}
+        {!cookieNoticeSeen && <CookieBanner onClose={dismissCookieNotice} t={t} />}
 
         {showUnlockModal && (
           <div style={styles.modalOverlay} onClick={() => setShowUnlockModal(false)}>
             <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
-              <h2 style={styles.modalTitle}>Sblocca memoria completa</h2>
+              <h2 style={styles.modalTitle}>{t.unlockTitle}</h2>
 
               <div style={styles.modalText}>
-                ✔️ Nessun limite nel numero di ricordi
-                <br />
-                ✔️ 500 MB di spazio inclusi
-                <br />
-                ✔️ Possibilità di aggiungere spazio in seguito
-                <br />
-                ✔️ Accesso completo alla tua storia
+                {t.unlockBenefits.split('\n').map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
               </div>
 
               <div style={styles.modalText}>
-                Accesso completo beta: <strong>€29 una tantum</strong>
+                <strong>{t.unlockPrice}</strong>
               </div>
 
               <div style={styles.modalText}>
-                Per attivare l’accesso completo scrivici a:
+                {t.unlockContact}
                 <br />
                 <strong>info@unspokenwords.it</strong>
               </div>
@@ -1695,18 +1996,19 @@ export default function App() {
                 <button
                   style={styles.primaryButton}
                   onClick={() => {
-                    window.location.href =
-                      'mailto:info@unspokenwords.it?subject=Richiesta sblocco memoria completa'
+                    window.location.href = `mailto:info@unspokenwords.it?subject=${encodeURIComponent(
+                      t.unlockSubject
+                    )}`
                   }}
                 >
-                  Scrivici
+                  {t.contactUs}
                 </button>
 
                 <button
                   style={styles.secondaryButton}
                   onClick={() => setShowUnlockModal(false)}
                 >
-                  Chiudi
+                  {t.close}
                 </button>
               </div>
             </div>
@@ -1718,8 +2020,8 @@ export default function App() {
 
   if (page === 'profile') {
     return loadingProfile ? (
-      <PageShell title="Chi sono" go={go}>
-        <div style={styles.emptyPanel}>Caricamento profilo...</div>
+      <PageShell title={t.myProfile} go={go} lang={lang} setLang={setLang} t={t}>
+        <div style={styles.emptyPanel}>{t.loadingProfile}</div>
       </PageShell>
     ) : (
       <Profile
@@ -1727,14 +2029,17 @@ export default function App() {
         session={session}
         go={go}
         refreshProfile={refreshProfile}
+        lang={lang}
+        setLang={setLang}
+        t={t}
       />
     )
   }
 
   if (page === 'memories') {
     return loadingMemories ? (
-      <PageShell title="Ricordi" go={go}>
-        <div style={styles.emptyPanel}>Caricamento...</div>
+      <PageShell title={t.memories} go={go} lang={lang} setLang={setLang} t={t}>
+        <div style={styles.emptyPanel}>{t.loading}</div>
       </PageShell>
     ) : (
       <Memories
@@ -1746,6 +2051,9 @@ export default function App() {
         isUnlocked={isUnlocked}
         isLimitReached={isLimitReached}
         onUnlock={handleUnlock}
+        lang={lang}
+        setLang={setLang}
+        t={t}
       />
     )
   }
@@ -1765,6 +2073,9 @@ export default function App() {
         storageLimitMb={Number(profile.storageLimitMb || 500)}
         storageUsedBytes={Number(profile.storageUsedBytes || 0)}
         onUnlock={handleUnlock}
+        lang={lang}
+        setLang={setLang}
+        t={t}
       />
     )
   }
@@ -1776,6 +2087,9 @@ export default function App() {
         go={go}
         setEditing={setEditing}
         deleteMemory={deleteMemory}
+        lang={lang}
+        setLang={setLang}
+        t={t}
       />
     )
   }
@@ -2812,5 +3126,43 @@ const styles = {
   homeActionPanelMobile: {
     padding: '24px 18px',
     borderRadius: '24px',
+  },
+
+  langTopBar: {
+    position: 'absolute',
+    top: '18px',
+    right: '18px',
+    zIndex: 5,
+  },
+
+  langSwitch: {
+    display: 'flex',
+    gap: '8px',
+    padding: '6px',
+    borderRadius: '999px',
+    background: 'rgba(20, 12, 10, 0.55)',
+    border: '1px solid rgba(255,255,255,0.10)',
+    backdropFilter: 'blur(10px)',
+  },
+
+  langSwitchCompact: {
+    transform: 'scale(0.96)',
+  },
+
+  langButton: {
+    minWidth: '48px',
+    padding: '8px 12px',
+    borderRadius: '999px',
+    border: '1px solid rgba(255,255,255,0.12)',
+    background: 'transparent',
+    color: '#f5efe4',
+    cursor: 'pointer',
+    fontSize: '0.9rem',
+  },
+
+  langButtonActive: {
+    background: 'linear-gradient(135deg, #8a5727 0%, #c68a3f 100%)',
+    color: '#fff7ea',
+    border: '1px solid rgba(255,219,168,0.22)',
   },
 }
