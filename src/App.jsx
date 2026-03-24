@@ -33,9 +33,10 @@ const translations = {
     authenticationError: 'Errore di autenticazione.',
 
     legacyName: 'UnspokenWords Legacy',
-    heroTitle: 'Il tuo spazio personale\nper custodire ricordi,\nparole e presenza.',
+    heroTitle: 'Il tuo spazio personale\nper custodire ricordi,\nvoce e presenza.',
+
     heroLead:
-      'Legacy è uno spazio intimo e protetto dove raccogliere testi, foto, video, voce e tracce audio in un archivio personale ordinato e sempre accessibile.',
+      'Crea uno spazio privato dove conservare pensieri, immagini e momenti importanti.\nInizia in pochi secondi.\n\nAccesso iniziale gratuito. Privato. Sempre accessibile.',
     private: '🔒 Privato',
     alwaysAccessible: '☁️ Sempre accessibile',
     mediaTypes: '🎙️ Foto, voce, video, audio',
