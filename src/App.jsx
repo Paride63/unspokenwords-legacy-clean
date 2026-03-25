@@ -183,7 +183,7 @@ const translations = {
     legacyName: 'UnspokenWords Legacy',
     heroTitle: 'Your personal space\nto preserve memories,\nwords, and presence.',
     heroLead:
-      'Legacy is a private and protected space where you can collect text, photos, videos, voice notes, and audio tracks in a personal archive that stays organized and always accessible.',
+      'Create a private space to preserve thoughts, images, and meaningful moments. Start in seconds with free access. Private. Always accessible.',
     private: '🔒 Private',
     alwaysAccessible: '☁️ Always accessible',
     mediaTypes: '🎙️ Photos, voice, video, audio',
