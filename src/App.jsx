@@ -339,6 +339,12 @@ function getBrowserLang() {
   return browser.startsWith('it') ? 'it' : 'en'
 }
 
+function getMemoryPreviewImage(memory) {
+  if (!memory?.images || !Array.isArray(memory.images) || memory.images.length === 0) return null
+  const firstImage = memory.images[0]
+  return firstImage?.url || null
+}
+
 async function uploadFileToBucket(bucket, item, folder = 'uploads') {
   if (!item?.file) return item
 
@@ -1102,48 +1108,169 @@ function Memories({
         <div style={styles.emptyPanel}>{t.noMemoriesFound}</div>
       ) : (
         <div style={styles.memoryGrid}>
-          {filteredMemories.map((memory) => (
-            <div key={memory.id} style={styles.memoryCard}>
-              <div style={styles.memoryCardTitle}>{memory.title || t.untitled}</div>
+          {filteredMemories.map((memory) => {
+            const previewImage = getMemoryPreviewImage(memory)
 
-              <div style={styles.memoryCardText}>
-                {memory.text ? memory.text.slice(0, 120) : ''}
-              </div>
-
-              <div style={styles.memoryMeta}>
-                {memory.audio?.voiceUrl ? <span>🎙️</span> : null}
-                {memory.images?.length ? <span>📷 {memory.images.length}</span> : null}
-                {memory.videos?.length ? <span>🎥 {memory.videos.length}</span> : null}
-                {memory.audio?.tracks?.length ? <span>🎵 {memory.audio.tracks.length}</span> : null}
-              </div>
-
-              <div style={styles.memoryCardActions}>
+            return (
+              <div
+                key={memory.id}
+                style={{
+                  ...styles.memoryCard,
+                  borderRadius: '26px',
+                  overflow: 'hidden',
+                  boxShadow: '0 18px 40px rgba(0,0,0,0.20)',
+                }}
+              >
                 <button
-                  style={styles.smallButton}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: 0,
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                  }}
                   onClick={() => {
                     setViewing(memory)
                     go('detail')
                   }}
                 >
-                  {t.open}
+                  {previewImage ? (
+                    <div
+                      style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '220px',
+                        overflow: 'hidden',
+                        background: 'rgba(0,0,0,0.22)',
+                      }}
+                    >
+                      <img
+                        src={previewImage}
+                        alt={memory.title || t.untitled}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+background: 'rgba(0,0,0,0.22)',
+                          objectPosition: 'center',
+                          display: 'block',
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background:
+                            'linear-gradient(to top, rgba(12,8,7,0.92) 0%, rgba(12,8,7,0.46) 32%, rgba(12,8,7,0.08) 62%, rgba(12,8,7,0.02) 100%)',
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: 'absolute',
+                          left: '18px',
+                          right: '18px',
+                          bottom: '16px',
+                          color: '#fff7ea',
+                          fontSize: '1.5rem',
+                          fontWeight: 700,
+                          lineHeight: 1.08,
+                          textShadow: '0 2px 12px rgba(0,0,0,0.35)',
+                        }}
+                      >
+                        {memory.title || t.untitled}
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        height: '220px',
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                        justifyContent: 'flex-start',
+                        padding: '18px',
+                        background:
+                          'linear-gradient(135deg, rgba(90,56,28,0.48) 0%, rgba(34,20,14,0.55) 100%)',
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: '#fff7ea',
+                          fontSize: '1.5rem',
+                          fontWeight: 700,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {memory.title || t.untitled}
+                      </div>
+                    </div>
+                  )}
                 </button>
 
-                <button
-                  style={styles.smallButton}
-                  onClick={() => {
-                    setEditing(memory)
-                    go('editor')
-                  }}
-                >
-                  {t.edit}
-                </button>
+                <div style={{ padding: '18px 20px 20px' }}>
+                  <div
+                    style={{
+                      color: '#e7d8c2',
+                      lineHeight: 1.65,
+                      minHeight: '78px',
+                      marginBottom: '16px',
+                      fontSize: '1rem',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {memory.text ? memory.text.slice(0, 160) : ''}
+                  </div>
 
-                <button style={styles.smallDeleteButton} onClick={() => deleteMemory(memory.id)}>
-                  {t.delete}
-                </button>
+                  <div
+                    style={{
+                      color: '#e0bc7a',
+                      fontSize: '0.98rem',
+                      marginBottom: '18px',
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {memory.audio?.voiceUrl ? <span>🎙️</span> : null}
+                    {memory.images?.length ? <span>📷 {memory.images.length}</span> : null}
+                    {memory.videos?.length ? <span>🎥 {memory.videos.length}</span> : null}
+                    {memory.audio?.tracks?.length ? <span>🎵 {memory.audio.tracks.length}</span> : null}
+                  </div>
+
+                  <div style={styles.memoryCardActions}>
+                    <button
+                      style={styles.smallButton}
+                      onClick={() => {
+                        setViewing(memory)
+                        go('detail')
+                      }}
+                    >
+                      {t.open}
+                    </button>
+
+                    <button
+                      style={styles.smallButton}
+                      onClick={() => {
+                        setEditing(memory)
+                        go('editor')
+                      }}
+                    >
+                      {t.edit}
+                    </button>
+
+                    <button style={styles.smallDeleteButton} onClick={() => deleteMemory(memory.id)}>
+                      {t.delete}
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </PageShell>
@@ -2183,6 +2310,7 @@ const styles = {
     lineHeight: 1.75,
     maxWidth: '760px',
     marginBottom: '24px',
+    whiteSpace: 'pre-line',
   },
 
   authHeroPills: {
@@ -2524,7 +2652,7 @@ const styles = {
   pageInner: {
     position: 'relative',
     zIndex: 2,
-    width: 'min(980px, calc(100% - 40px))',
+    width: 'min(1100px, calc(100% - 40px))',
     margin: '0 auto',
     padding: '34px 0 60px',
   },
@@ -2726,6 +2854,8 @@ const styles = {
     height: 'auto',
     maxHeight: '400px',
     objectFit: 'contain',
+    maxHeight: '100%',
+    maxWidth: '100%',
     borderRadius: '12px',
     display: 'block',
     background: 'rgba(0,0,0,0.35)',
@@ -2862,30 +2992,67 @@ const styles = {
 
   memoryGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '18px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+    gap: '20px',
   },
 
   memoryCard: {
     background: 'rgba(255,255,255,0.07)',
     border: '1px solid rgba(255,255,255,0.10)',
     borderRadius: '24px',
-    padding: '22px',
+    overflow: 'hidden',
     backdropFilter: 'blur(8px)',
     boxShadow: '0 14px 36px rgba(0,0,0,0.14)',
+  },
+
+  memoryPreviewButton: {
+    display: 'block',
+    width: '100%',
+    padding: 0,
+    border: 'none',
+    background: 'transparent',
+    cursor: 'pointer',
+  },
+
+  memoryPreviewImage: {
+    width: '100%',
+    height: '220px',
+    objectFit: 'contain',
+maxHeight: '100%',
+maxWidth: '100%',
+    display: 'block',
+    background: 'rgba(0,0,0,0.32)',
+  },
+
+  memoryPreviewFrame: {
+    width: '100%',
+    height: '220px',
+    background: 'rgba(0,0,0,0.18)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  memoryCardBody: {
+    padding: '22px',
   },
 
   memoryCardTitle: {
     color: '#f4ead8',
     fontSize: '1.2rem',
     marginBottom: '10px',
+    fontWeight: 600,
   },
 
   memoryCardText: {
     color: '#dbcdb6',
     lineHeight: 1.6,
-    minHeight: '52px',
+    minHeight: '72px',
     marginBottom: '14px',
+    display: '-webkit-box',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
   },
 
   memoryMeta: {
