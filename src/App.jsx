@@ -1426,39 +1426,73 @@ function Editor({
   }, [editing])
 
   const startRecording = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      const recorder = new MediaRecorder(stream)
-      chunksRef.current = []
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
 
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunksRef.current.push(e.data)
-      }
+    let mimeType = ''
 
-      recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: 'audio/webm' })
-        const file = new File([blob], `voice-${Date.now()}.webm`, { type: 'audio/webm' })
-        const url = URL.createObjectURL(blob)
-
-        setData((prev) => ({
-          ...prev,
-          audio: {
-            ...(prev.audio || {}),
-            voiceUrl: url,
-            voiceFile: file,
-          },
-        }))
-
-        stream.getTracks().forEach((track) => track.stop())
-      }
-
-      recorderRef.current = recorder
-      recorder.start()
-      setRecording(true)
-    } catch {
-      alert(t.unableMic)
+    if (MediaRecorder.isTypeSupported('audio/mp4')) {
+      mimeType = 'audio/mp4'
+    } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+      mimeType = 'audio/webm'
     }
+
+    const recorder = mimeType
+      ? new MediaRecorder(stream, { mimeType })
+      : new MediaRecorder(stream)
+
+    chunksRef.current = []
+
+    recorder.ondataavailable = (e) => {
+      if (e.data.size > 0) {
+        chunksRef.current.push(e.data)
+      }
+    }
+
+    recorder.onstop = () => {
+      const actualMimeType = recorder.mimeType || mimeType || 'audio/webm'
+
+      const extension =
+        actualMimeType.includes('mp4') ||
+        actualMimeType.includes('mpeg') ||
+        actualMimeType.includes('aac')
+          ? 'm4a'
+          : 'webm'
+
+      const blob = new Blob(chunksRef.current, {
+        type: actualMimeType,
+      })
+
+      const file = new File(
+        [blob],
+        `voice-${Date.now()}.${extension}`,
+        {
+          type: actualMimeType,
+        }
+      )
+
+      const url = URL.createObjectURL(blob)
+
+      setData((prev) => ({
+        ...prev,
+        audio: {
+          ...(prev.audio || {}),
+          voiceUrl: url,
+          voiceFile: file,
+        },
+      }))
+
+      stream.getTracks().forEach((track) => track.stop())
+    }
+
+    recorderRef.current = recorder
+    recorder.start()
+    setRecording(true)
+  } catch (err) {
+    console.error(err)
+    alert(t.unableMic)
   }
+}
 
   const stopRecording = () => {
     if (recorderRef.current) {
